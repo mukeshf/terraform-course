@@ -9,8 +9,8 @@ resource "aws_instance" "jenkins-instance" {
   vpc_security_group_ids = ["${aws_security_group.jenkins-securitygroup.id}"]
 
   # the public SSH key
-  #key_name = "${aws_key_pair.mykeypair.key_name}"
-  key_name = "mykey"
+  key_name = "${aws_key_pair.mykeypair.key_name}"
+  #key_name = "mykey"
 
   # user data
   user_data = "${data.template_cloudinit_config.cloudinit-jenkins.rendered}"
@@ -45,6 +45,6 @@ resource "aws_instance" "app-instance" {
   vpc_security_group_ids = ["${aws_security_group.app-securitygroup.id}"]
 
   # the public SSH key
-  #key_name = "${aws_key_pair.mykeypair.key_name}"
-  key_name = "mykey"
+  key_name = "${aws_key_pair.mykeypair.key_name}"
+  #key_name = "mykey"
 }
